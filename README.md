@@ -1,50 +1,169 @@
-# Welcome to your Expo app 👋
+# 📱 Freelancer Project Management App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> A complete offline mobile app for freelancers to manage their projects, tasks, and deadlines — built with **React Native** and **Expo**.
 
-## Get started
+---
 
-1. Install dependencies
+## 🛰 Overview
+This application allows freelancers to create and manage multiple projects with task boards, track progress over time, and visualize deadlines.  
+Everything is stored locally using **AsyncStorage**, so the app works completely **offline**.
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## 🧩 Features
 
-   ```bash
-   npx expo start
-   ```
+### 🗂 Project Management
+- Create new projects with the following details:
+  - Project Name  
+  - Budget  
+  - Client Name  
+  - Estimated Time (hours)  
+  - Description  
+- Start and complete projects  
+- Confirmation dialog before starting a project  
+- Shows **deadline** and **remaining time** dynamically  
+- Limits free users to 5 projects (simulated subscription)
 
-In the output, you'll find options to open the app in a
+### ✅ Task & Checklist
+- Add a checklist inside each project  
+- Mark tasks as completed  
+- Displays visual progress percentage  
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 🧾 Notes
+- Add project notes and comments  
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### ⏱ Time Tracking
+- When starting a project, the app:
+  - Shows the calculated deadline based on estimated time  
+  - Continuously updates remaining time  
+  - Visually displays progress (progress bar)
 
-## Get a fresh project
+---
 
-When you're ready, run:
+## ⚙️ Technologies Used
 
-```bash
-npm run reset-project
+| Category | Technology | Description |
+|-----------|-------------|-------------|
+| **Framework** | React Native + Expo | Cross-platform mobile framework |
+| **Navigation** | React Navigation | Stack navigation between screens |
+| **UI Styling** | React Native StyleSheet | Native styling system |
+| **Local Database** | AsyncStorage | Persistent offline data |
+| **Notifications (optional)** | Expo Notifications | Local alerts for deadlines |
+| **State Management** | React Hooks | `useState`, `useEffect` |
+
+---
+
+## 📁 Project Structure
+```
+project-management/
+├── App.js
+├── screens/
+│   ├── HomeScreen.js        # Project list and filters
+│   ├── NewProject.js        # Add new project form
+│   ├── ProjectDetail.js     # Deadline, progress, and checklist
+├── components/
+│   ├── ProjectCard.js
+│   └── TimeTracker.js
+├── utils/
+│   └── storage.js           # AsyncStorage logic
+└── assets/
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## 🚀 Run the App from Source
 
-To learn more about developing your project with Expo, look at the following resources:
+### 🔧 Prerequisites
+Make sure these are installed:
+- [Node.js](https://nodejs.org/) (v18+)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+- **Expo Go App** on your phone  
+  📱 Android → [Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent)  
+  🍎 iOS → [App Store](https://apps.apple.com/app/expo-go/id982107779)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+### 🪄 Step 1 — Clone the Repository
+```bash
+git clone https://github.com/<your-username>/project-management-app.git
+cd project-management-app
+```
 
-Join our community of developers creating universal apps.
+### 🪄 Step 2 — Install Dependencies
+```bash
+npm install
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### 🪄 Step 3 — Run the App
+```bash
+npx expo start
+```
+
+### 🪄 Step 4 — Connect to Your Phone
+- Open **Expo Go** on your mobile device  
+- Scan the **QR Code** shown in your terminal or browser  
+- The app will open instantly on your phone 🎉  
+
+> Every time you save a file, the app auto-refreshes on your device.
+
+---
+
+## 🧱 Run on Web or Emulator
+
+- Web:
+  ```bash
+  npm run web
+  ```
+- Android emulator:
+  ```bash
+  npm run android
+  ```
+- iOS simulator (Mac only):
+  ```bash
+  npm run ios
+  ```
+
+---
+
+## 📦 Build an APK (Offline App)
+
+To generate an installable APK for Android:
+```bash
+npx expo prebuild
+npx expo run:android
+```
+
+APK will be saved at:
+```
+android/app/build/outputs/apk/debug/app-debug.apk
+```
+
+You can transfer this file to any Android phone and install it manually.
+
+---
+
+## 💾 Data Persistence
+- All data is stored using **AsyncStorage** (local storage on device)
+- No backend or server required
+- Data stays saved even after app restarts
+
+---
+
+## 💡 Troubleshooting
+If progress bars don’t move:
+1. Ensure you entered a valid **Estimated Time** when creating a project  
+2. Make sure you clicked **Start Project** and confirmed it  
+3. Background timers must not be restricted in Expo Go  
+4. For testing, set `fastProgress: true` inside `ProjectDetail.js`
+
+---
+
+## 👨‍💻 Author
+**Developer:** [Your Name]  
+**GitHub:** [https://github.com/YourUsername](https://github.com/YourUsername)  
+**Technologies:** React Native, Expo, AsyncStorage, React Navigation
+
+---
+
+## 🧠 License
+This project is open-source. You can use or modify it freely for learning or development.
